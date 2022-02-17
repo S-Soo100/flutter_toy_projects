@@ -17,10 +17,10 @@ class MyApp extends StatelessWidget {
         title: 'my practice app',
         theme: ThemeData(
         primarySwatch: Colors.grey,),
-        initialRoute : '',
+        initialRoute : 'home',
         routes : {
-          '/home' : (context) => MyHomePage(),
-          '//providerHome' : (context) => ProviderHome(),
+          'home' : (context) => MyHomePage(),
+          'providerHome' : (context) => ProviderHome(),
         }
     );
   }
