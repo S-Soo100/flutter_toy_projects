@@ -12,17 +12,36 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Container(child: _routeButton(context: context),),
+      appBar: AppBar(
+        title: const Text('Home Route'),
+      ),
+      body: Center(
+        child: Column(
+          children: [
+            Column(
+              children: [
+                Container(child: _routeButton(context: context),),
+              ],
+            ),
+          ],
+        ),
+      ),
     );
   }
 
   Widget _routeButton({required context}){
     return InkWell(
       child: Container(
-        color: Colors.red,
-        width: 100,
-        height: 100,
+        child: Text('프로바이더 예제'),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+        border: Border.all(
+    color: Colors.black,
+        style: BorderStyle.solid,
+    width: 1
+        ),),
+        width: 200,
+        height: 80,
       ),
       onTap: (){Navigator.pushNamed(context, 'providerHome');},
     );
