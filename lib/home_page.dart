@@ -15,35 +15,36 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: const Text('Home Route'),
       ),
-      body: Center(
-        child: Column(
-          children: [
-            Column(
-              children: [
-                Container(child: _routeButton(context: context),),
-              ],
-            ),
-          ],
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Center(
+          child: Column(
+            children: [
+              _routeButton(context: context, title: 'counter with provider', router: 'providerHome'),
+              _routeButton(context: context, title: 'counter withOut provider', router: 'noProviderHome'),
+            ],
+          ),
         ),
       ),
     );
   }
 
-  Widget _routeButton({required context}){
+  Widget _routeButton({required context, required title, required router}){
     return InkWell(
       child: Container(
-        child: Text('프로바이더 예제'),
+        margin: EdgeInsets.all(10),
+        child: Center(child: Text(title)),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
         border: Border.all(
     color: Colors.black,
         style: BorderStyle.solid,
-    width: 1
+    width: 6
         ),),
         width: 200,
         height: 80,
       ),
-      onTap: (){Navigator.pushNamed(context, 'providerHome');},
+      onTap: (){Navigator.pushNamed(context, router);},
     );
   }
 }

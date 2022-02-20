@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:my_practice_app/screen/provider_practice.dart';
+import 'package:my_practice_app/screen/counter_provider_practice.dart';
+import 'package:my_practice_app/provider/counter_provider.dart';
+import 'package:my_practice_app/screen/no_provider.dart';
+import 'package:provider/provider.dart';
 
 import 'home_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(create: (_)=>Counter())
+  ],
+  child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -21,6 +27,7 @@ class MyApp extends StatelessWidget {
         routes : {
           'home' : (context) => MyHomePage(),
           'providerHome' : (context) => ProviderHome(),
+          'noProviderHome' : (context) => NoProviderHome(),
         }
     );
   }
