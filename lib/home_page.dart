@@ -22,6 +22,7 @@ class _MyHomePageState extends State<MyHomePage> {
             children: [
               _routeButton(context: context, title: 'counter with provider', router: 'providerHome'),
               _routeButton(context: context, title: 'counter withOut provider', router: 'noProviderHome'),
+              _routeButton(context: context, title: 'shopping cart provider', router: 'shoppingCartProviderHome'),
             ],
           ),
         ),
