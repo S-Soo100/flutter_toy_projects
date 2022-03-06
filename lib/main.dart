@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_practice_app/provider/shopping_cart_provider.dart';
 import 'package:my_practice_app/screen/counter_provider_practice.dart';
 import 'package:my_practice_app/provider/counter_provider.dart';
+import 'package:my_practice_app/screen/dio_sign_up.dart';
 import 'package:my_practice_app/screen/no_provider.dart';
 import 'package:my_practice_app/screen/shopping_cart_provider_home.dart';
 import 'package:provider/provider.dart';
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
           'providerHome' : (context) => ProviderHome(),
           'noProviderHome' : (context) => NoProviderHome(),
           'shoppingCartProviderHome' : (context) => ShoppingCartProviderHome(),
+          'dioSignUpHome' : (context) => DioSignUpHome(),
         }
     );
   }

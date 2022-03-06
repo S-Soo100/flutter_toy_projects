@@ -23,6 +23,7 @@ class _MyHomePageState extends State<MyHomePage> {
               _routeButton(context: context, title: 'counter with provider', router: 'providerHome'),
               _routeButton(context: context, title: 'counter withOut provider', router: 'noProviderHome'),
               _routeButton(context: context, title: 'shopping cart provider', router: 'shoppingCartProviderHome'),
+              _routeButton(context: context, title: 'dio Sign-Up', router: 'dioSignUpHome'),
             ],
           ),
         ),
@@ -33,15 +34,18 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget _routeButton({required context, required title, required router}){
     return InkWell(
       child: Container(
-        margin: EdgeInsets.all(10),
-        child: Center(child: Text(title)),
+        margin: const EdgeInsets.all(10),
+        child: Center(child: Text(title, style: const TextStyle(
+          fontSize: 17,
+        ),
+        textAlign: TextAlign.center,)),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
         border: Border.all(
-    color: Colors.black,
-        style: BorderStyle.solid,
-    width: 6
-        ),),
+          color: Colors.black38,
+              style: BorderStyle.solid,
+          width: 3
+          ),),
         width: 200,
         height: 80,
       ),
