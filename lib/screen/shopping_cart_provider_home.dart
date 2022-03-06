@@ -26,7 +26,7 @@ class _ShoppingCartProviderHomeState extends State<ShoppingCartProviderHome> {
         actions: [
           IconButton(
               onPressed: () {
-                Navigator.pushNamed(context, 'home');
+                Navigator.popAndPushNamed(context, 'home');
               },
               icon: const Icon(Icons.home))
         ],
