@@ -60,6 +60,9 @@ class _DioSignUpHomeState extends State<DioSignUpHome> {
             Navigator.pushNamed(context, 'home');
           }, icon: const Icon(Icons.home))
         ],),
+      floatingActionButton: FloatingActionButton(onPressed: () {
+
+      },),
       body: Form(
         key: formKey,
         child: Padding(
@@ -90,7 +93,7 @@ class _DioSignUpHomeState extends State<DioSignUpHome> {
                 ButtonBoxWidget(
                     buttonName: '회원가입',
                     onPressed: () {
-                      submit();
+                      myDialog(context);
                     }
                 ),
               ],
@@ -99,6 +102,15 @@ class _DioSignUpHomeState extends State<DioSignUpHome> {
         ),
       ),
     );
+  }
+
+  void myDialog(BuildContext context){
+    showDialog(context: context, builder: (BuildContext context){
+      return AlertDialog(
+        title: Text('title'),
+
+      );
+    });
   }
 
   Future<bool> emailSignUp({required String email,
@@ -111,7 +123,7 @@ class _DioSignUpHomeState extends State<DioSignUpHome> {
     try {
       Response response = await dio.post(
           "$serverUrl/user/",
-          queryParameters: {
+          data : {
             "email": email,
             "password": password,
             "username": username,

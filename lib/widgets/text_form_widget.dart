@@ -68,7 +68,7 @@ class _TextFormWidgetState extends State<TextFormWidget> {
             inputFormatters: widget.inputFormatter,
           ),
           const SizedBox(
-            height: 40.0,
+            height: 20.0,
           ),
         ],
       ),
