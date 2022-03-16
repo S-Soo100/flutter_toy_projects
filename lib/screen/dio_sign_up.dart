@@ -104,11 +104,13 @@ class _DioSignUpHomeState extends State<DioSignUpHome> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('title'),
-            content: ButtonBoxWidget(
+            title: const Text('회원가입 하쉴?'),
+            actions: [ButtonBoxWidget(
               buttonName: '회원가입',
-              onPressed: () => {submit()},
-            ),
+              onPressed: (){
+              Navigator.of(context).pop();
+              submit();},
+            ),]
           );
         });
   }
