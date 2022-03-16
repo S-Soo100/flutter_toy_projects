@@ -5,7 +5,7 @@ import 'package:my_practice_app/widgets/buttonBox.dart';
 import 'package:my_practice_app/widgets/text_form_widget.dart';
 
 class DioSignUpHome extends StatefulWidget {
-static String DioSignUpHomeRouteName = 'dioSignUpHome';
+  static String DioSignUpHomeRouteName = 'dioSignUpHome';
   const DioSignUpHome({Key? key}) : super(key: key);
 
   @override
@@ -13,7 +13,6 @@ static String DioSignUpHomeRouteName = 'dioSignUpHome';
 }
 
 class _DioSignUpHomeState extends State<DioSignUpHome> {
-
   final formKey = GlobalKey<FormState>();
   late TextEditingController _emailTextController;
   late TextEditingController _userNameTextController;
@@ -25,16 +24,11 @@ class _DioSignUpHomeState extends State<DioSignUpHome> {
 
   @override
   void initState() {
-    _emailTextController =
-        TextEditingController();
-    _passwordTextController =
-        TextEditingController();
-    _userNameTextController =
-        TextEditingController();
-    _nickNameTextController =
-        TextEditingController();
-    _phoneNumberTextController =
-        TextEditingController();
+    _emailTextController = TextEditingController();
+    _passwordTextController = TextEditingController();
+    _userNameTextController = TextEditingController();
+    _nickNameTextController = TextEditingController();
+    _phoneNumberTextController = TextEditingController();
     super.initState();
   }
 
@@ -55,14 +49,16 @@ class _DioSignUpHomeState extends State<DioSignUpHome> {
       appBar: AppBar(
         title: const Text('processing'),
         actions: [
-
-          IconButton(onPressed: () {
-            Navigator.pushNamed(context, 'home');
-          }, icon: const Icon(Icons.home))
-        ],),
-      floatingActionButton: FloatingActionButton(onPressed: () {
-
-      },),
+          IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, 'home');
+              },
+              icon: const Icon(Icons.home))
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+      ),
       body: Form(
         key: formKey,
         child: Padding(
@@ -94,8 +90,7 @@ class _DioSignUpHomeState extends State<DioSignUpHome> {
                     buttonName: '회원가입',
                     onPressed: () {
                       myDialog(context);
-                    }
-                ),
+                    }),
               ],
             ),
           ),
@@ -104,42 +99,46 @@ class _DioSignUpHomeState extends State<DioSignUpHome> {
     );
   }
 
-  void myDialog(BuildContext context){
-    showDialog(context: context, builder: (BuildContext context){
-      return AlertDialog(
-        title: Text('title'),
-
-      );
-    });
+  void myDialog(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('title'),
+            content: ButtonBoxWidget(
+              buttonName: '회원가입',
+              onPressed: () => {submit()},
+            ),
+          );
+        });
   }
 
-  Future<bool> emailSignUp({required String email,
-    required String password,
-    required String username,
-    required String nickname,
-    required String appVersion,
-    required String phone}) async {
+  Future<bool> emailSignUp(
+      {required String email,
+      required String password,
+      required String username,
+      required String nickname,
+      required String appVersion,
+      required String phone}) async {
     Dio dio = Dio();
     try {
-      Response response = await dio.post(
-          "$serverUrl/user/",
-          data : {
-            "email": email,
-            "password": password,
-            "username": username,
-            "phone": phone,
-            "appVersion": appVersion,
-            "profiles": [
-              {
-                "nickname": nickname,
-              }
-            ]
+      Response response = await dio.post("$serverUrl/user/", data: {
+        "email": email,
+        "password": password,
+        "username": username,
+        "phone": phone,
+        "appVersion": appVersion,
+        "profiles": [
+          {
+            "nickname": nickname,
           }
-      );
+        ]
+      });
       if (response.statusCode == 200) {
         final jsonBody = json.decode(response.data);
         return true;
-      } else { // 200 안뜨면 에러
+      } else {
+        // 200 안뜨면 에러
         return false;
       }
     } catch (e) {
