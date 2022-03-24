@@ -20,10 +20,28 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Center(
           child: Column(
             children: [
-              _routeButton(context: context, title: 'counter with provider', router: 'providerHome'),
-              _routeButton(context: context, title: 'counter withOut provider', router: 'noProviderHome'),
-              _routeButton(context: context, title: 'shopping cart provider', router: 'shoppingCartProviderHome'),
-              _routeButton(context: context, title: 'dio Sign-Up', router: 'dioSignUpHome'),
+              _routeButton(
+                  context: context,
+                  title: 'counter with provider',
+                  router: 'providerHome'),
+              _routeButton(
+                  context: context,
+                  title: 'counter withOut provider',
+                  router: 'noProviderHome'),
+              _routeButton(
+                  context: context,
+                  title: 'shopping cart provider',
+                  router: 'shoppingCartProviderHome'),
+              _routeButton(
+                  context: context,
+                  title: 'dio Sign-Up',
+                  router: 'dioSignUpHome'),
+              _routeButton(
+                  context: context, title: 'DioTest', router: 'dioTest'),
+              _routeButton(
+                  context: context,
+                  title: 'HttpCloneCoding',
+                  router: 'httpCloneCoding'),
             ],
           ),
         ),
@@ -31,25 +49,29 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  Widget _routeButton({required context, required title, required router}){
+  Widget _routeButton({required context, required title, required router}) {
     return InkWell(
       child: Container(
         margin: const EdgeInsets.all(10),
-        child: Center(child: Text(title, style: const TextStyle(
-          fontSize: 17,
-        ),
-        textAlign: TextAlign.center,)),
+        child: Center(
+            child: Text(
+          title,
+          style: const TextStyle(
+            fontSize: 17,
+          ),
+          textAlign: TextAlign.center,
+        )),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-        border: Border.all(
-          color: Colors.black38,
-              style: BorderStyle.solid,
-          width: 3
-          ),),
-        width: 200,
-        height: 80,
+          border: Border.all(
+              color: Colors.black38, style: BorderStyle.solid, width: 3),
+        ),
+        width: 240,
+        height: 45,
       ),
-      onTap: (){Navigator.pushNamed(context, router);},
+      onTap: () {
+        Navigator.pushNamed(context, router);
+      },
     );
   }
 }

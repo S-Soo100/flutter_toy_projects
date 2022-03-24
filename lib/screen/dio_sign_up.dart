@@ -1,7 +1,8 @@
 import 'dart:convert';
 import 'package:dio/dio.dart';
+import 'package:either_dart/either.dart';
 import 'package:flutter/material.dart';
-import 'package:my_practice_app/widgets/buttonBox.dart';
+import 'package:my_practice_app/widgets/button_box_widget.dart';
 import 'package:my_practice_app/widgets/text_form_widget.dart';
 
 class DioSignUpHome extends StatefulWidget {
@@ -41,6 +42,7 @@ class _DioSignUpHomeState extends State<DioSignUpHome> {
       phone: _phoneNumberTextController.text,
       appVersion: appVersion,
     );
+    Navigator.of(context).pop();
   }
 
   @override
@@ -55,9 +57,6 @@ class _DioSignUpHomeState extends State<DioSignUpHome> {
               },
               icon: const Icon(Icons.home))
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
       ),
       body: Form(
         key: formKey,
@@ -87,9 +86,12 @@ class _DioSignUpHomeState extends State<DioSignUpHome> {
                   textEditingController: _phoneNumberTextController,
                 ),
                 ButtonBoxWidget(
+                    context: context,
                     buttonName: '회원가입',
                     onPressed: () {
-                      myDialog(context);
+                      myDialog(context, '회원가입 하쉴?', () {
+                        submit();
+                      });
                     }),
               ],
             ),
@@ -99,19 +101,17 @@ class _DioSignUpHomeState extends State<DioSignUpHome> {
     );
   }
 
-  void myDialog(BuildContext context) {
+  void myDialog(BuildContext context, String title, Function onPressed) {
     showDialog(
         context: context,
         builder: (BuildContext context) {
-          return AlertDialog(
-            title: const Text('회원가입 하쉴?'),
-            actions: [ButtonBoxWidget(
+          return AlertDialog(title: Text(title), actions: [
+            ButtonBoxWidget(
+              context: context,
               buttonName: '회원가입',
-              onPressed: (){
-              Navigator.of(context).pop();
-              submit();},
-            ),]
-          );
+              onPressed: onPressed,
+            ),
+          ]);
         });
   }
 
