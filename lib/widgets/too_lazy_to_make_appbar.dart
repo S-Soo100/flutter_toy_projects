@@ -7,7 +7,8 @@ AppBar TooLazyToMakeAppbar(
     actions: [
       IconButton(
           onPressed: () {
-            Navigator.pushNamed(context, 'home');
+            Navigator.pushNamedAndRemoveUntil(
+                context, 'home', (route) => false);
           },
           icon: const Icon(Icons.home))
     ],

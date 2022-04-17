@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_practice_app/provider/shopping_cart_provider.dart';
-import 'package:my_practice_app/screen/shopping_list_tile.dart';
+import 'package:my_practice_app/widgets/shopping_list_tile.dart';
 import 'package:provider/provider.dart';
 
 class ShoppingCartProviderHome extends StatefulWidget {
@@ -26,7 +26,9 @@ class _ShoppingCartProviderHomeState extends State<ShoppingCartProviderHome> {
         actions: [
           IconButton(
               onPressed: () {
-                Navigator.popAndPushNamed(context, 'home');
+                // Navigator.popAndPushNamed(context, 'home');
+                Navigator.pushNamedAndRemoveUntil(
+                    context, 'home', (route) => false);
               },
               icon: const Icon(Icons.home))
         ],
