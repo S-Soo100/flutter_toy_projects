@@ -5,6 +5,7 @@ import 'package:my_practice_app/provider/counter_provider.dart';
 import 'package:my_practice_app/screen/http_clone_coding.dart';
 import 'package:my_practice_app/screen/dio_sign_up.dart';
 import 'package:my_practice_app/screen/dio_test.dart';
+import 'package:my_practice_app/screen/http_weather_screen.dart';
 import 'package:my_practice_app/screen/no_provider.dart';
 import 'package:my_practice_app/screen/shopping_cart_provider_home.dart';
 import 'package:provider/provider.dart';
@@ -38,6 +39,7 @@ class MyApp extends StatelessWidget {
           'dioSignUpHome': (context) => DioSignUpHome(),
           'dioTest': (context) => DioTest(),
           'httpCloneCoding': (context) => HttpCloneCoding(),
+          'httpWeatherScreenRouteName': (context) => HttpWeatherScreen(),
         });
   }
 }

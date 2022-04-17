@@ -42,6 +42,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   context: context,
                   title: 'HttpCloneCoding',
                   router: 'httpCloneCoding'),
+              _routeButton(
+                  context: context,
+                  title: 'httpWeatherScreen',
+                  router: 'httpWeatherScreenRouteName'),
             ],
           ),
         ),

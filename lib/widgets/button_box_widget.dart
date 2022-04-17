@@ -17,7 +17,7 @@ class ButtonBoxWidget extends StatelessWidget {
       onPressed: () => onPressed(),
       child: Container(
         padding: const EdgeInsets.all(16),
-        width: 450,
+        width: MediaQuery.of(context).size.width * 0.6,
         height: height ?? 130,
         decoration: const BoxDecoration(
           color: Color(0xff434343),

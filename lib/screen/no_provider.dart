@@ -20,7 +20,8 @@ class _NoProviderHomeState extends State<NoProviderHome> {
         actions: [
           IconButton(
               onPressed: () {
-                Navigator.popAndPushNamed(context, 'home');
+                Navigator.pushNamedAndRemoveUntil(
+                    context, 'home', (route) => false);
               },
               icon: const Icon(Icons.home))
         ],
