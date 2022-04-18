@@ -5,7 +5,12 @@ class MyLocation {
   late double longitude2;
 
   Future<void> getMyCurrentLocation() async {
-    LocationPermission permission = await Geolocator.requestPermission();
+    LocationPermission permission = await Geolocator.checkPermission();
+    if (_checkPermission(permission) == false) {
+      await Geolocator.requestPermission();
+    }
+
+    // LocationPermission permission = await Geolocator.requestPermission();
     try {
       Position position = await Geolocator.getCurrentPosition(
           desiredAccuracy: LocationAccuracy.high);
@@ -15,5 +20,11 @@ class MyLocation {
     } catch (e) {
       print('또 안됐지롱 ㅋㅋㄹㅃㅃ');
     }
+  }
+
+  bool _checkPermission(LocationPermission permission) {
+    if (permission == LocationPermission.always) return true;
+    if (permission == LocationPermission.whileInUse) return true;
+    return false;
   }
 }
