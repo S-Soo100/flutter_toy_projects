@@ -42,7 +42,11 @@ class _HttpWeatherScreenState extends State<HttpWeatherScreen> {
         scheme: 'https',
         host: 'api.openweathermap.org',
         path: 'data/2.5/weather',
-        queryParameters: {'lat': latitude3, 'lon': latitude3, 'appid': apikey});
+        queryParameters: {
+          'lat': latitude3.toString(),
+          'lon': latitude3.toString(),
+          'appid': apikey
+        });
     print(latitude3);
     print(longitude3);
 
