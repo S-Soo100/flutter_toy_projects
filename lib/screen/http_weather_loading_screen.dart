@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:my_practice_app/data/my_location.dart';
 import 'package:my_practice_app/data/network_weather_data.dart';
+import 'package:my_practice_app/screen/http_weather_ui_screen.dart';
 import 'package:my_practice_app/widgets/too_lazy_to_make_appbar.dart';
 
 const apikey = 'edf45a719af6304a635cc5c823140394';
 
-class HttpWeatherScreen extends StatefulWidget {
-  static String httpWeatherScreenRouteName = 'httpWeatherScreen';
-  const HttpWeatherScreen({Key? key}) : super(key: key);
+class HttpWeatherLoadingScreen extends StatefulWidget {
+  static String httpWeatherLoadingScreenRouteName = 'httpWeatherLoadingScreen';
+  const HttpWeatherLoadingScreen({Key? key}) : super(key: key);
 
   @override
-  State<HttpWeatherScreen> createState() => _HttpWeatherScreenState();
+  State<HttpWeatherLoadingScreen> createState() =>
+      _HttpWeatherLoadingScreenState();
 }
 
-class _HttpWeatherScreenState extends State<HttpWeatherScreen> {
+class _HttpWeatherLoadingScreenState extends State<HttpWeatherLoadingScreen> {
   //! 처음 사용한 예시코드
   // var uri = Uri(
   //     scheme: 'https',
@@ -43,22 +45,30 @@ class _HttpWeatherScreenState extends State<HttpWeatherScreen> {
         host: 'api.openweathermap.org',
         path: 'data/2.5/weather',
         queryParameters: {
-          'lat': latitude3.toString(),
-          'lon': latitude3.toString(),
-          'appid': apikey
+          'lat': '$latitude3',
+          'lon': '$latitude3',
+          'appid': '$apikey',
+          'units': 'metric'
         });
     print(latitude3);
     print(longitude3);
 
     NetworkWeatherData networkWeatherData = NetworkWeatherData(uri);
+
+    var weatherData = await networkWeatherData.getJsonData();
+    print(weatherData);
+    Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return HttpWeatherUiScreen(parseWeatherData: weatherData);
+    }));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: TooLazyToMakeAppbar(context: context, title: 'weather&http'),
       body: Center(
         child: MaterialButton(
+          textColor: Colors.white,
+          color: Colors.lightBlue[200],
           onPressed: () {
             getLocation();
           },
