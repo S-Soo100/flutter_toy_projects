@@ -20,6 +20,17 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Center(
           child: Column(
             children: [
+              InkWell(
+                onTap: () {},
+                child: Expanded(
+                    child: Container(
+                  height: 80,
+                  alignment: Alignment.center,
+                  child: Image.network(
+                      "https://firebase.google.com/images/brand-guidelines/logo-standard.png?hl=ko"),
+                  color: Colors.blue,
+                )),
+              ),
               _routeButton(
                   context: context,
                   title: 'counter with provider',
