@@ -151,3 +151,45 @@ class _DioSignUpHomeState extends State<DioSignUpHome> {
     return false;
   }
 }
+
+void myList() {
+  List<Map<String, dynamic>> myList = [
+    {
+      'name': 'Gwen',
+      'price': 6300,
+      'position': ['top', 'jungle']
+    },
+    {
+      'name': 'Ashe',
+      'price': 450,
+      'position': ['bottom']
+    },
+    {
+      'name': 'Bard',
+      'price': 4800,
+      'position': ['support']
+    },
+    {
+      'name': 'Lee Sin',
+      'price': 4800,
+      'position': ['top', 'jungle', 'mid', 'support']
+    },
+  ];
+
+  print(myList[1]);
+
+  print('애쉬의 영어 이름은 ${myList[1]['name']} 입니다.');
+  print('애쉬의 가격은 ${myList[1]['price']} 입니다.');
+  print('애쉬의 포지션은 ${myList[1]['position'][0]} 입니다.');
+
+  myList.add(
+    {
+      'name': 'Jayce',
+      'price': 4800,
+      'position': ['top', 'mid']
+    },
+  );
+
+  // myList.where((data) => data).toList()
+  //   ..sort((a, b) => a.price.compareTo(b.price));
+}

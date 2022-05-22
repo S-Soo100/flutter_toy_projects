@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MyHomePage extends StatefulWidget {
   static const String MyHomePageRouteName = 'home';
@@ -20,16 +21,25 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Center(
           child: Column(
             children: [
-              InkWell(
-                onTap: () {},
-                child: Expanded(
-                    child: Container(
-                  height: 80,
-                  alignment: Alignment.center,
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10.0),
+                child: _rectangleButton(
+                  onTap: () {},
+                  color: Colors.blue,
                   child: Image.network(
                       "https://firebase.google.com/images/brand-guidelines/logo-standard.png?hl=ko"),
-                  color: Colors.blue,
-                )),
+                ),
+              ),
+              _rectangleButton(
+                onTap: () =>
+                    Navigator.pushNamed(context, 'skeletonLoadingPractice'),
+                color: Colors.lightGreen,
+                child: Text(
+                  'Skeleton Loading',
+                  style: GoogleFonts.alike(
+                      textStyle: Theme.of(context).textTheme.headline4,
+                      color: Colors.white),
+                ),
               ),
               _routeButton(
                   context: context,
@@ -61,6 +71,21 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
       ),
+    );
+  }
+
+  InkWell _rectangleButton(
+      {required Widget child,
+      required Function() onTap,
+      required Color color}) {
+    return InkWell(
+      onTap: onTap,
+      child: Expanded(
+          child: Container(
+              height: 80,
+              alignment: Alignment.center,
+              color: color,
+              child: child)),
     );
   }
 
