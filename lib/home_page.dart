@@ -10,6 +10,10 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  bool showProviderMenu = false;
+  bool showHttpMenu = false;
+  bool showGetMenu = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,17 +22,14 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
-        child: Center(
+        child: SingleChildScrollView(
           child: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.only(bottom: 10.0),
-                child: _rectangleButton(
-                  onTap: () {},
-                  color: Colors.blue,
-                  child: Image.network(
-                      "https://firebase.google.com/images/brand-guidelines/logo-standard.png?hl=ko"),
-                ),
+              _rectangleButton(
+                onTap: () {},
+                color: Colors.blue,
+                child: Image.network(
+                    "https://firebase.google.com/images/brand-guidelines/logo-standard.png?hl=ko"),
               ),
               _rectangleButton(
                 onTap: () =>
@@ -41,32 +42,94 @@ class _MyHomePageState extends State<MyHomePage> {
                       color: Colors.white),
                 ),
               ),
-              _routeButton(
-                  context: context,
-                  title: 'counter with provider',
-                  router: 'providerHome'),
-              _routeButton(
-                  context: context,
-                  title: 'counter withOut provider',
-                  router: 'noProviderHome'),
-              _routeButton(
-                  context: context,
-                  title: 'shopping cart provider',
-                  router: 'shoppingCartProviderHome'),
-              _routeButton(
-                  context: context,
-                  title: 'dio Sign-Up',
-                  router: 'dioSignUpHome'),
-              _routeButton(
-                  context: context, title: 'DioTest', router: 'dioTest'),
-              _routeButton(
-                  context: context,
-                  title: 'HttpCloneCoding',
-                  router: 'httpCloneCoding'),
-              _routeButton(
-                  context: context,
-                  title: 'httpWeatherLoadingScreen',
-                  router: 'httpWeatherLoadingScreenRouteName'),
+              _rectangleButton(
+                onTap: () {
+                  showProviderMenu = !showProviderMenu;
+                  setState(() {});
+                },
+                color: const Color.fromARGB(255, 244, 109, 99),
+                child: Text(
+                  'Provider',
+                  style: GoogleFonts.diplomata(
+                      textStyle: Theme.of(context).textTheme.headline4,
+                      color: Colors.white),
+                ),
+              ),
+              showProviderMenu
+                  ? Column(
+                      children: [
+                        _routeButton(
+                            context: context,
+                            title: 'counter with provider',
+                            router: 'providerHome'),
+                        _routeButton(
+                            context: context,
+                            title: 'counter withOut provider',
+                            router: 'noProviderHome'),
+                        _routeButton(
+                            context: context,
+                            title: 'shopping cart provider',
+                            router: 'shoppingCartProviderHome')
+                      ],
+                    )
+                  : const SizedBox(),
+              _rectangleButton(
+                onTap: () {
+                  showHttpMenu = !showHttpMenu;
+                  setState(() {});
+                },
+                color: const Color.fromARGB(255, 132, 90, 228),
+                child: Text(
+                  'HTTPS & DIO',
+                  style: GoogleFonts.aBeeZee(
+                      textStyle: Theme.of(context).textTheme.headline4,
+                      color: Colors.white),
+                ),
+              ),
+              showHttpMenu
+                  ? Column(
+                      children: [
+                        _routeButton(
+                            context: context,
+                            title: 'dio Sign-Up',
+                            router: 'dioSignUpHome'),
+                        _routeButton(
+                            context: context,
+                            title: 'DioTest',
+                            router: 'dioTest'),
+                        _routeButton(
+                            context: context,
+                            title: 'HttpCloneCoding',
+                            router: 'httpCloneCoding'),
+                        _routeButton(
+                            context: context,
+                            title: 'httpWeatherLoadingScreen',
+                            router: 'httpWeatherLoadingScreenRouteName'),
+                      ],
+                    )
+                  : const SizedBox(),
+              _rectangleButton(
+                  onTap: () {
+                    showGetMenu = !showGetMenu;
+                    setState(() {});
+                  },
+                  child: Text(
+                    'GET-X',
+                    style: GoogleFonts.lato(
+                        textStyle: Theme.of(context).textTheme.headline4,
+                        color: Colors.white),
+                  ),
+                  color: Colors.amber),
+              showGetMenu
+                  ? Column(
+                      children: [
+                        _routeButton(
+                            context: context,
+                            title: 'fcm',
+                            router: 'fcmPractice'),
+                      ],
+                    )
+                  : const SizedBox(),
             ],
           ),
         ),
@@ -82,6 +145,7 @@ class _MyHomePageState extends State<MyHomePage> {
       onTap: onTap,
       child: Expanded(
           child: Container(
+              margin: const EdgeInsets.symmetric(vertical: 5),
               height: 80,
               alignment: Alignment.center,
               color: color,
@@ -92,7 +156,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget _routeButton({required context, required title, required router}) {
     return InkWell(
       child: Container(
-        margin: const EdgeInsets.all(10),
+        margin: const EdgeInsets.all(4),
         child: Center(
             child: Text(
           title,

@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:my_practice_app/provider/shopping_cart_provider.dart';
 import 'package:my_practice_app/screen/counter_provider_practice.dart';
 import 'package:my_practice_app/provider/counter_provider.dart';
+import 'package:my_practice_app/screen/fcm_practice.dart';
 import 'package:my_practice_app/screen/http_clone_coding.dart';
 import 'package:my_practice_app/screen/dio_sign_up.dart';
 import 'package:my_practice_app/screen/dio_test.dart';
@@ -12,8 +13,8 @@ import 'package:my_practice_app/screen/no_provider.dart';
 import 'package:my_practice_app/screen/shopping_cart_provider_home.dart';
 import 'package:my_practice_app/screen/skeleton_loading_practice.dart';
 import 'package:provider/provider.dart';
-
 import 'home_page.dart';
+import 'dart:ffi';
 
 void main() {
   runApp(MultiProvider(providers: [
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           textTheme: GoogleFonts.openSansTextTheme(),
           primaryTextTheme: GoogleFonts.openSansTextTheme().copyWith(
-            headline6: TextStyle(
+            headline6: const TextStyle(
               color: Colors.white,
             ),
           ),
@@ -54,6 +55,7 @@ class MyApp extends StatelessWidget {
           'httpWeatherUiScreenRouteName': (context) =>
               const HttpWeatherUiScreen(),
           'skeletonLoadingPractice': (context) => SkeletonLoadingPractice(),
+          'fcmPractice': (context) => FcmPractice(),
         });
   }
 }
