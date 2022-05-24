@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "473956346033",
+    "project_id": "arthur-practice",
+    "storage_bucket": "arthur-practice.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:473956346033:android:ce899fd4a048f14a885a90",
+        "android_client_info": {
+          "package_name": "com.example.my_practice_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "473956346033-stc0gaoh90ej6kg09rstirjiadabsh65.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_0RNQMWrcKKrW09Yw_NL3FjMTia-C4Tw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "473956346033-stc0gaoh90ej6kg09rstirjiadabsh65.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
