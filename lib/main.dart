@@ -1,26 +1,32 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_practice_app/provider/shopping_cart_provider.dart';
-import 'package:my_practice_app/screen/counter_provider_practice.dart';
+import 'package:my_practice_app/screen/firebase/email_login_page.dart';
+import 'package:my_practice_app/screen/provider/counter_provider_practice.dart';
 import 'package:my_practice_app/provider/counter_provider.dart';
-import 'package:my_practice_app/screen/fcm_practice.dart';
-import 'package:my_practice_app/screen/http_clone_coding.dart';
-import 'package:my_practice_app/screen/dio_sign_up.dart';
-import 'package:my_practice_app/screen/dio_test.dart';
-import 'package:my_practice_app/screen/http_weather_loading_screen.dart';
-import 'package:my_practice_app/screen/http_weather_ui_screen.dart';
-import 'package:my_practice_app/screen/no_provider.dart';
-import 'package:my_practice_app/screen/shopping_cart_provider_home.dart';
+import 'package:my_practice_app/screen/get/fcm_practice.dart';
+import 'package:my_practice_app/screen/http/http_clone_coding.dart';
+import 'package:my_practice_app/screen/http/dio_sign_up.dart';
+import 'package:my_practice_app/screen/http/dio_test.dart';
+import 'package:my_practice_app/screen/http/http_weather_loading_screen.dart';
+import 'package:my_practice_app/screen/http/http_weather_ui_screen.dart';
+import 'package:my_practice_app/screen/provider/no_provider.dart';
+import 'package:my_practice_app/screen/provider/shopping_cart_provider_home.dart';
 import 'package:my_practice_app/screen/skeleton_loading_practice.dart';
 import 'package:provider/provider.dart';
 import 'home_page.dart';
 import 'dart:ffi';
 
-void main() {
-  runApp(MultiProvider(providers: [
-    ChangeNotifierProvider(create: (_) => Counter()),
-    ChangeNotifierProvider(create: (_) => ShoppingCart())
-  ], child: MyApp()));
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(
+    MultiProvider(providers: [
+      ChangeNotifierProvider(create: (_) => Counter()),
+      ChangeNotifierProvider(create: (_) => ShoppingCart())
+    ], child: MyApp()),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -56,6 +62,7 @@ class MyApp extends StatelessWidget {
               const HttpWeatherUiScreen(),
           'skeletonLoadingPractice': (context) => SkeletonLoadingPractice(),
           'fcmPractice': (context) => FcmPractice(),
+          'emailLoginPage': (context) => EmailLoginPage(),
         });
   }
 }

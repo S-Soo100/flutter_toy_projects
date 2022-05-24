@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_practice_app/data/my_location.dart';
 import 'package:my_practice_app/data/network_weather_data.dart';
-import 'package:my_practice_app/screen/http_weather_ui_screen.dart';
+import 'package:my_practice_app/screen/http/http_weather_ui_screen.dart';
 import 'package:my_practice_app/widgets/too_lazy_to_make_appbar.dart';
 
 const apikey = 'edf45a719af6304a635cc5c823140394';

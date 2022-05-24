@@ -10,6 +10,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  bool showFirebaseMenu = false;
   bool showProviderMenu = false;
   bool showHttpMenu = false;
   bool showGetMenu = false;
@@ -26,11 +27,24 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             children: [
               _rectangleButton(
-                onTap: () {},
+                onTap: () {
+                  showFirebaseMenu = !showFirebaseMenu;
+                  setState(() {});
+                },
                 color: Colors.blue,
                 child: Image.network(
                     "https://firebase.google.com/images/brand-guidelines/logo-standard.png?hl=ko"),
               ),
+              showFirebaseMenu
+                  ? Column(
+                      children: [
+                        _routeButton(
+                            context: context,
+                            title: 'Email Login',
+                            router: 'emailLoginPage'),
+                      ],
+                    )
+                  : const SizedBox(),
               _rectangleButton(
                 onTap: () =>
                     Navigator.pushNamed(context, 'skeletonLoadingPractice'),
