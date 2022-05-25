@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_practice_app/provider/shopping_cart_provider.dart';
 import 'package:my_practice_app/screen/firebase/email_login_page.dart';
+import 'package:my_practice_app/screen/firebase/google_login_page.dart';
 import 'package:my_practice_app/screen/provider/counter_provider_practice.dart';
 import 'package:my_practice_app/provider/counter_provider.dart';
 import 'package:my_practice_app/screen/get/fcm_practice.dart';
@@ -24,8 +25,8 @@ void main() async {
   runApp(
     MultiProvider(providers: [
       ChangeNotifierProvider(create: (_) => Counter()),
-      ChangeNotifierProvider(create: (_) => ShoppingCart())
-    ], child: MyApp()),
+      ChangeNotifierProvider(create: (_) => ShoppingCart()),
+    ], child: const MyApp()),
   );
 }
 
@@ -60,9 +61,11 @@ class MyApp extends StatelessWidget {
               const HttpWeatherLoadingScreen(),
           'httpWeatherUiScreenRouteName': (context) =>
               const HttpWeatherUiScreen(),
-          'skeletonLoadingPractice': (context) => SkeletonLoadingPractice(),
+          'skeletonLoadingPractice': (context) =>
+              const SkeletonLoadingPractice(),
           'fcmPractice': (context) => FcmPractice(),
-          'emailLoginPage': (context) => EmailLoginPage(),
+          'emailLoginPage': (context) => const EmailLoginPage(),
+          'googleLoginPage': (context) => const GoogleLoginPage(),
         });
   }
 }

@@ -42,6 +42,10 @@ class _MyHomePageState extends State<MyHomePage> {
                             context: context,
                             title: 'Email Login',
                             router: 'emailLoginPage'),
+                        _routeButton(
+                            context: context,
+                            title: 'Google Login',
+                            router: 'googleLoginPage'),
                       ],
                     )
                   : const SizedBox(),

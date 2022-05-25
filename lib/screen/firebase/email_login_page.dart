@@ -224,7 +224,6 @@ class _EmailLoginPageState extends State<EmailLoginPage>
                             ScaffoldMessenger.of(context)
                                 .showSnackBar(const SnackBar(
                               content: Text('에러가 났습니다. 제발..'),
-                              backgroundColor: Colors.black38,
                             ));
                           }
                         },
