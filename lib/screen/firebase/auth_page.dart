@@ -301,6 +301,14 @@ class _AuthPageState extends State<AuthPage>
     return Center(
         child: Column(
       children: [
+        Container(
+            width: 300,
+            height: 300,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('assets/images/sign_in_illust.jpg'),
+                  fit: BoxFit.cover),
+            )),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(
@@ -361,7 +369,7 @@ class _AuthPageState extends State<AuthPage>
                 color: Colors.green,
                 width: 0.5,
               ),
-              borderRadius: BorderRadius.circular(5)),
+              borderRadius: BorderRadius.circular(30)),
           alignment: Alignment.center,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
