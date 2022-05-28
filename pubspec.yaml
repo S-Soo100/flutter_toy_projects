@@ -49,6 +49,9 @@ dependencies:
   skeleton_loader: ^2.0.0+4
   get: ^4.6.1
   google_sign_in: ^5.3.2
+  sign_in_apple: ^2.0.0
+  sign_in_with_apple: ^4.0.0
+  sign_in_with_apple_web: ^1.0.1
 
 dev_dependencies:
   flutter_test:

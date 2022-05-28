@@ -1,9 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_practice_app/firebase_options.dart';
 import 'package:my_practice_app/provider/shopping_cart_provider.dart';
-import 'package:my_practice_app/screen/firebase/email_login_page.dart';
+import 'package:my_practice_app/screen/firebase/chatting_page.dart';
+import 'package:my_practice_app/screen/firebase/auth_page.dart';
 import 'package:my_practice_app/screen/firebase/google_login_page.dart';
 import 'package:my_practice_app/screen/provider/counter_provider_practice.dart';
 import 'package:my_practice_app/provider/counter_provider.dart';
@@ -39,7 +41,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'my practice app',
         theme: ThemeData(
@@ -67,8 +69,9 @@ class MyApp extends StatelessWidget {
           'skeletonLoadingPractice': (context) =>
               const SkeletonLoadingPractice(),
           'fcmPractice': (context) => FcmPractice(),
-          'emailLoginPage': (context) => const EmailLoginPage(),
+          'authPage': (context) => const AuthPage(),
           'googleLoginPage': (context) => const GoogleLoginPage(),
+          'chattingPage': (context) => const ChattingPage(),
         });
   }
 }

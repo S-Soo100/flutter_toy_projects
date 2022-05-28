@@ -40,8 +40,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       children: [
                         _routeButton(
                             context: context,
-                            title: 'Email Login',
-                            router: 'emailLoginPage'),
+                            title: 'auth Login',
+                            router: 'authPage'),
                         _routeButton(
                             context: context,
                             title: 'Google Login',
@@ -184,12 +184,12 @@ class _MyHomePageState extends State<MyHomePage> {
           textAlign: TextAlign.center,
         )),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(4),
           border: Border.all(
-              color: Colors.black38, style: BorderStyle.solid, width: 3),
+              color: Colors.black38, style: BorderStyle.solid, width: 1),
         ),
-        width: 240,
-        height: 45,
+        width: 300,
+        height: 40,
       ),
       onTap: () {
         Navigator.pushNamed(context, router);
