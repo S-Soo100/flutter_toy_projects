@@ -51,20 +51,7 @@ class _AuthPageState extends State<AuthPage>
     return await FirebaseAuth.instance.signInWithCredential(credential);
   }
 
-  // void appleLogIn() async {
-  //   //firebase auth추가 인증
-  //   final _firebaseAuth = FirebaseAuth.instance;
-  //   List<Scope> scopes = [Scope.email, Scope.fullName];
-
-  //   //애플 로그인이 이용 가능한지 체크
-  //   if (await SignInWithApple.isAvailable()) {
-  //     //로그인 동작 수행
-  //       var result = await SignInWithApple.
-  //   }
-  // }
-
-  /// Generates a cryptographically secure random nonce, to be included in a
-  /// credential request.
+//apple
   String generateNonce([int length = 32]) {
     final charset =
         '0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._';
