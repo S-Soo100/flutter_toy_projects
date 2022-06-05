@@ -52,6 +52,8 @@ dependencies:
   sign_in_apple: ^2.0.0
   sign_in_with_apple: ^4.0.0
   sign_in_with_apple_web: ^1.0.1
+  firebase_messaging: ^11.4.1
+  flutter_local_notifications: ^9.5.3+1
 
 dev_dependencies:
   flutter_test:

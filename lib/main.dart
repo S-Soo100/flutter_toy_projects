@@ -6,6 +6,7 @@ import 'package:my_practice_app/firebase_options.dart';
 import 'package:my_practice_app/provider/shopping_cart_provider.dart';
 import 'package:my_practice_app/screen/firebase/chatting_page.dart';
 import 'package:my_practice_app/screen/firebase/auth_page.dart';
+import 'package:my_practice_app/screen/firebase/fcm_test_page.dart';
 import 'package:my_practice_app/screen/firebase/google_login_page.dart';
 import 'package:my_practice_app/screen/provider/counter_provider_practice.dart';
 import 'package:my_practice_app/provider/counter_provider.dart';
@@ -21,12 +22,27 @@ import 'package:my_practice_app/screen/skeleton_loading_practice.dart';
 import 'package:provider/provider.dart';
 import 'home_page.dart';
 import 'dart:ffi';
+//fcm libraries
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+//fcm controller
+import 'package:my_practice_app/controller/app_controller.dart';
+
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  // If you're going to use other Firebase services in the background, such as Firestore,
+  // make sure you call `initializeApp` before using other Firebase services.
+  await Firebase.initializeApp();
+
+  print("Handling a background message: ${message.messageId}");
+}
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+
   runApp(
     MultiProvider(providers: [
       ChangeNotifierProvider(create: (_) => Counter()),
@@ -38,10 +54,12 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+        initialBinding: BindingsBuilder(() {
+          Get.put(AppController());
+        }),
         debugShowCheckedModeBanner: false,
         title: 'my practice app',
         theme: ThemeData(
@@ -72,6 +90,7 @@ class MyApp extends StatelessWidget {
           'authPage': (context) => const AuthPage(),
           'googleLoginPage': (context) => const GoogleLoginPage(),
           'chattingPage': (context) => const ChattingPage(),
+          'fcmTestPage': (context) => FcmTestPage(),
         });
   }
 }

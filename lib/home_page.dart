@@ -44,8 +44,8 @@ class _MyHomePageState extends State<MyHomePage> {
                             router: 'authPage'),
                         _routeButton(
                             context: context,
-                            title: 'Google Login',
-                            router: 'googleLoginPage'),
+                            title: 'Fcm',
+                            router: 'fcmTestPage'),
                       ],
                     )
                   : const SizedBox(),
