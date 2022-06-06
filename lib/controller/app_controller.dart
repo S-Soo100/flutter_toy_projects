@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -16,15 +17,17 @@ class AppController extends GetxController {
     /// 자동 권한 확보 상태
     NotificationSettings settings = await messaging.requestPermission(
       alert: true,
-      announcement: false,
+      announcement: true,
       badge: true,
-      carPlay: false,
-      criticalAlert: false,
-      provisional: false,
+      carPlay: true,
+      criticalAlert: true,
+      provisional: true,
       sound: true,
     );
     // 한번 이걸 프린트해서 콘솔에서 확인해봐도 된다.
-    print(settings.authorizationStatus);
+    if (kDebugMode) {
+      print(settings.authorizationStatus);
+    }
     _getToken();
     _onMessage();
     super.onInit();
