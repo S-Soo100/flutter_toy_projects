@@ -6,11 +6,9 @@ import 'package:my_practice_app/firebase_options.dart';
 import 'package:my_practice_app/provider/shopping_cart_provider.dart';
 import 'package:my_practice_app/screen/firebase/chatting_page.dart';
 import 'package:my_practice_app/screen/firebase/auth_page.dart';
-import 'package:my_practice_app/screen/firebase/fcm_test_page.dart';
 import 'package:my_practice_app/screen/firebase/google_login_page.dart';
 import 'package:my_practice_app/screen/provider/counter_provider_practice.dart';
 import 'package:my_practice_app/provider/counter_provider.dart';
-import 'package:my_practice_app/screen/get/fcm_practice.dart';
 import 'package:my_practice_app/screen/http/http_clone_coding.dart';
 import 'package:my_practice_app/screen/http/dio_sign_up.dart';
 import 'package:my_practice_app/screen/http/dio_test.dart';
@@ -24,7 +22,6 @@ import 'home_page.dart';
 import 'dart:ffi';
 //fcm libraries
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 //fcm controller
 import 'package:my_practice_app/controller/app_controller.dart';
 
@@ -57,9 +54,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-        initialBinding: BindingsBuilder(() {
-          Get.put(AppController());
-        }),
+        initialBinding:
+            BindingsBuilder.put(() => AppController(), permanent: true),
         debugShowCheckedModeBanner: false,
         title: 'my practice app',
         theme: ThemeData(
@@ -86,11 +82,9 @@ class MyApp extends StatelessWidget {
               const HttpWeatherUiScreen(),
           'skeletonLoadingPractice': (context) =>
               const SkeletonLoadingPractice(),
-          'fcmPractice': (context) => FcmPractice(),
           'authPage': (context) => const AuthPage(),
           'googleLoginPage': (context) => const GoogleLoginPage(),
           'chattingPage': (context) => const ChattingPage(),
-          'fcmTestPage': (context) => FcmTestPage(),
         });
   }
 }

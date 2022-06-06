@@ -41,11 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         _routeButton(
                             context: context,
                             title: 'auth Login',
-                            router: 'authPage'),
-                        _routeButton(
-                            context: context,
-                            title: 'Fcm',
-                            router: 'fcmTestPage'),
+                            router: 'authPage')
                       ],
                     )
                   : const SizedBox(),
@@ -140,12 +136,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   color: Colors.amber),
               showGetMenu
                   ? Column(
-                      children: [
-                        _routeButton(
-                            context: context,
-                            title: 'fcm',
-                            router: 'fcmPractice'),
-                      ],
+                      children: [],
                     )
                   : const SizedBox(),
             ],
