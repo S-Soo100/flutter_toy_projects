@@ -14,6 +14,7 @@ class _MyHomePageState extends State<MyHomePage> {
   bool showProviderMenu = false;
   bool showHttpMenu = false;
   bool showGetMenu = false;
+  bool showFlutterBasicMenu = false;
 
   @override
   Widget build(BuildContext context) {
@@ -139,6 +140,27 @@ class _MyHomePageState extends State<MyHomePage> {
                       children: [],
                     )
                   : const SizedBox(),
+              _rectangleButton(
+                onTap: () {
+                  showFlutterBasicMenu = !showFlutterBasicMenu;
+                  setState(() {});
+                },
+                child: Text(
+                  'FlutterBasic',
+                  style: GoogleFonts.lato(
+                      textStyle: Theme.of(context).textTheme.headline4,
+                      color: Colors.white),
+                ),
+                color: const Color.fromARGB(255, 97, 64, 189),
+              ),
+              showFlutterBasicMenu
+                  ? Column(children: [
+                      _routeButton(
+                          context: context,
+                          title: 'Flutter Basic',
+                          router: 'flutterBasic'),
+                    ])
+                  : const SizedBox()
             ],
           ),
         ),

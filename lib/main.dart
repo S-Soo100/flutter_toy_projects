@@ -7,6 +7,7 @@ import 'package:my_practice_app/provider/shopping_cart_provider.dart';
 import 'package:my_practice_app/screen/firebase/chatting_page.dart';
 import 'package:my_practice_app/screen/firebase/auth_page.dart';
 import 'package:my_practice_app/screen/firebase/google_login_page.dart';
+import 'package:my_practice_app/screen/flutter_basic/flutter_basic_page.dart';
 import 'package:my_practice_app/screen/provider/counter_provider_practice.dart';
 import 'package:my_practice_app/provider/counter_provider.dart';
 import 'package:my_practice_app/screen/http/http_clone_coding.dart';
@@ -85,6 +86,7 @@ class MyApp extends StatelessWidget {
           'authPage': (context) => const AuthPage(),
           'googleLoginPage': (context) => const GoogleLoginPage(),
           'chattingPage': (context) => const ChattingPage(),
+          'flutterBasic': (context) => const FlutterBasicPage(),
         });
   }
 }
