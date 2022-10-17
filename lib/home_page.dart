@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 
 class MyHomePage extends StatefulWidget {
   static const String MyHomePageRouteName = 'home';
@@ -16,9 +17,22 @@ class _MyHomePageState extends State<MyHomePage> {
   bool showGetMenu = false;
   bool showFlutterBasicMenu = false;
 
+// DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+// AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
+// print('Running on ${androidInfo.model}');  // e.g. "Moto G (4)"
+
+// IosDeviceInfo iosInfo = await deviceInfo.iosInfo;
+// print('Running on ${iosInfo.utsname.machine}');  // e.g. "iPod7,1"
+
+// WebBrowserInfo webBrowserInfo = await deviceInfo.webBrowserInfo;
+// print('Running on ${webBrowserInfo.userAgent}');  // e.g. "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:61.0) Gecko/20100101 Firefox/61.0"
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+      ),
       appBar: AppBar(
         title: const Text('Home Route'),
       ),
@@ -159,6 +173,10 @@ class _MyHomePageState extends State<MyHomePage> {
                           context: context,
                           title: 'Flutter Basic',
                           router: 'flutterBasic'),
+                      _routeButton(
+                          context: context,
+                          title: 'Animation Practice',
+                          router: 'animationPractice'),
                     ])
                   : const SizedBox()
             ],
