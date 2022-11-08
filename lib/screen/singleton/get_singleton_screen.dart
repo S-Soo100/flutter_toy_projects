@@ -31,7 +31,6 @@ class _GetSingletonScreenState extends State<GetSingletonScreen> {
     super.initState();
     Get.put(GetSingleTonViewModel());
     viewModel = Get.find<GetSingleTonViewModel>();
-    setState(() {});
   }
 
   @override
@@ -44,13 +43,16 @@ class _GetSingletonScreenState extends State<GetSingletonScreen> {
             margin: const EdgeInsets.all(16),
             child: const Text("Current Singleton value is"),
           ),
-          Container(
-            margin: const EdgeInsets.all(16),
-            child: Text(
-              viewModel.userId ?? "",
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
-          ),
+          Obx(() {
+            return Container(
+              margin: const EdgeInsets.all(16),
+              child: Text(
+                viewModel.userId ?? "",
+                style:
+                    const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+            );
+          }),
         ]),
       ),
     );

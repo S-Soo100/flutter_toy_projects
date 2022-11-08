@@ -13,9 +13,9 @@ class MySingleton {
     _userId = 'null';
   } //private constructor
   //
-  // factory MySingleton() {
-  //   return instance;
-  // }
+  factory MySingleton() {
+    return instance;
+  }
   //
 
   void setCurrentUser({required String? uid}) {

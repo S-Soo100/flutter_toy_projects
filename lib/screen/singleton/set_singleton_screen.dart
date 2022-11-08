@@ -19,6 +19,9 @@ class SetSingleTonViewModel extends GetxController {
   void onInit() {
     super.onInit();
     _userId.bindStream(mySingleton.userIdStream);
+    _userId.listen((p0) {
+      print('userId Sub = ${p0}');
+    });
   }
 
   void setCurrentUser({required String uid}) {
@@ -34,7 +37,6 @@ class _SetSingletonScreenState extends State<SetSingletonScreen> {
     super.initState();
     Get.put(SetSingleTonViewModel());
     viewModel = Get.find<SetSingleTonViewModel>();
-    setState(() {});
   }
 
   @override
@@ -48,10 +50,12 @@ class _SetSingletonScreenState extends State<SetSingletonScreen> {
               margin: const EdgeInsets.all(16),
               child: const Text("Current Singleton value is..."),
             ),
-            Container(
-              margin: const EdgeInsets.all(16),
-              child: Text(viewModel.userId ?? ""),
-            ),
+            Obx(() {
+              return Container(
+                margin: const EdgeInsets.all(16),
+                child: Text(viewModel.userId ?? ""),
+              );
+            }),
             SizedBox(
               width: 180,
               child: TextFormField(
