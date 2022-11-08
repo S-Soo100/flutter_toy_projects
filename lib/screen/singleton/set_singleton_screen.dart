@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:my_practice_app/data/my_signeton.dart';
 
 class SetSingletonScreen extends StatefulWidget {
@@ -9,15 +10,31 @@ class SetSingletonScreen extends StatefulWidget {
   State<SetSingletonScreen> createState() => _SetSingletonScreenState();
 }
 
-class _SetSingletonScreenState extends State<SetSingletonScreen> {
-  MySingleton _mySingleton = MySingleton();
+class SetSingleTonViewModel extends GetxController {
+  final Rx<String?> _userId = Rx(null);
+  String? get userId => _userId.value;
+  MySingleton mySingleton = MySingleton.instance;
 
-  TextEditingController _controller = TextEditingController();
-  late Stream<String?> _stream;
-  String text = "null";
+  @override
+  void onInit() {
+    super.onInit();
+    _userId.bindStream(mySingleton.userIdStream);
+  }
+
+  void setCurrentUser({required String uid}) {
+    mySingleton.setCurrentUser(uid: uid);
+  }
+}
+
+class _SetSingletonScreenState extends State<SetSingletonScreen> {
+  final TextEditingController _controller = TextEditingController();
+  late SetSingleTonViewModel viewModel;
   @override
   initState() {
     super.initState();
+    Get.put(SetSingleTonViewModel());
+    viewModel = Get.find<SetSingleTonViewModel>();
+    setState(() {});
   }
 
   @override
@@ -29,13 +46,13 @@ class _SetSingletonScreenState extends State<SetSingletonScreen> {
           children: [
             Container(
               margin: const EdgeInsets.all(16),
-              child: Text("Current Singleton value is..."),
+              child: const Text("Current Singleton value is..."),
             ),
             Container(
               margin: const EdgeInsets.all(16),
-              child: Text(_mySingleton.userIdString ?? ""),
+              child: Text(viewModel.userId ?? ""),
             ),
-            Container(
+            SizedBox(
               width: 180,
               child: TextFormField(
                 controller: _controller,
@@ -44,7 +61,7 @@ class _SetSingletonScreenState extends State<SetSingletonScreen> {
             TextButton(
                 onPressed: () {
                   setState(() {
-                    _mySingleton.setCurrentUser(uid: _controller.text);
+                    viewModel.setCurrentUser(uid: _controller.text);
                     _controller.clear();
                   });
                 },

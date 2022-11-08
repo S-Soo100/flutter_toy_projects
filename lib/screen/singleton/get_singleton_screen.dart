@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:my_practice_app/data/my_signeton.dart';
+// import 'package:rxdart/rxdart.dart';
 
 class GetSingletonScreen extends StatefulWidget {
   static String GetSingletonScreenRouteName = 'getSingletonScreen';
@@ -9,15 +11,27 @@ class GetSingletonScreen extends StatefulWidget {
   State<GetSingletonScreen> createState() => _GetSingletonScreenState();
 }
 
-class _GetSingletonScreenState extends State<GetSingletonScreen> {
-  MySingleton _mySingleton = MySingleton();
+class GetSingleTonViewModel extends GetxController {
+  final Rx<String?> _userId = Rx(null);
+  String? get userId => _userId.value;
+  MySingleton mySingleton = MySingleton.instance;
 
-  TextEditingController _controller = TextEditingController();
-  late Stream<String?> _stream;
+  @override
+  void onInit() {
+    super.onInit();
+
+    _userId.bindStream(mySingleton.userIdStream);
+  }
+}
+
+class _GetSingletonScreenState extends State<GetSingletonScreen> {
+  late GetSingleTonViewModel viewModel;
   @override
   initState() {
     super.initState();
-    _stream = _mySingleton.userId;
+    Get.put(GetSingleTonViewModel());
+    viewModel = Get.find<GetSingleTonViewModel>();
+    setState(() {});
   }
 
   @override
@@ -33,7 +47,7 @@ class _GetSingletonScreenState extends State<GetSingletonScreen> {
           Container(
             margin: const EdgeInsets.all(16),
             child: Text(
-              _mySingleton.userIdString ?? "",
+              viewModel.userId ?? "",
               style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
           ),

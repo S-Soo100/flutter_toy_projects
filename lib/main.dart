@@ -23,7 +23,6 @@ import 'package:my_practice_app/screen/singleton/set_sigleton_screen.dart';
 import 'package:my_practice_app/screen/skeleton_loading_practice.dart';
 import 'package:provider/provider.dart';
 import 'home_page.dart';
-import 'dart:ffi';
 //fcm libraries
 import 'package:firebase_messaging/firebase_messaging.dart';
 //fcm controller
