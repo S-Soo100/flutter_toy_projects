@@ -16,6 +16,7 @@ class _MyHomePageState extends State<MyHomePage> {
   bool showHttpMenu = false;
   bool showGetMenu = false;
   bool showFlutterBasicMenu = false;
+  bool showSingletonMenu = false;
 
 // DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
 // AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
@@ -177,6 +178,31 @@ class _MyHomePageState extends State<MyHomePage> {
                           context: context,
                           title: 'Animation Practice',
                           router: 'animationPractice'),
+                    ])
+                  : const SizedBox(),
+              _rectangleButton(
+                onTap: () {
+                  showSingletonMenu = !showSingletonMenu;
+                  setState(() {});
+                },
+                child: Text(
+                  'Singleton Pattern',
+                  style: GoogleFonts.allison(
+                      textStyle: Theme.of(context).textTheme.headline2,
+                      color: Colors.white),
+                ),
+                color: Color.fromARGB(255, 103, 189, 117),
+              ),
+              showSingletonMenu
+                  ? Column(children: [
+                      _routeButton(
+                          context: context,
+                          title: 'Set singleton',
+                          router: 'setSingletonScreen'),
+                      _routeButton(
+                          context: context,
+                          title: 'Get singleton',
+                          router: 'getSingletonScreen'),
                     ])
                   : const SizedBox()
             ],

@@ -18,6 +18,8 @@ import 'package:my_practice_app/screen/http/http_weather_loading_screen.dart';
 import 'package:my_practice_app/screen/http/http_weather_ui_screen.dart';
 import 'package:my_practice_app/screen/provider/no_provider.dart';
 import 'package:my_practice_app/screen/provider/shopping_cart_provider_home.dart';
+import 'package:my_practice_app/screen/singleton/get_singleton_screen.dart';
+import 'package:my_practice_app/screen/singleton/set_sigleton_screen.dart';
 import 'package:my_practice_app/screen/skeleton_loading_practice.dart';
 import 'package:provider/provider.dart';
 import 'home_page.dart';
@@ -89,6 +91,8 @@ class MyApp extends StatelessWidget {
           'chattingPage': (context) => const ChattingPage(),
           'flutterBasic': (context) => const FlutterBasicPage(),
           'animationPractice': (context) => const AnimationPracticePage(),
+          'getSingletonScreen': (context) => const GetSingletonScreen(),
+          'setSingletonScreen': (context) => const SetSingletonScreen(),
         });
   }
 }
