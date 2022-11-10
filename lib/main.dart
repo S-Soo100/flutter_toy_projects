@@ -28,6 +28,8 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 //fcm controller
 import 'package:my_practice_app/controller/app_controller.dart';
 
+import 'screen/toss_payment/toss_payment_test.dart';
+
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   // If you're going to use other Firebase services in the background, such as Firestore,
   // make sure you call `initializeApp` before using other Firebase services.
@@ -38,9 +40,12 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  if (Firebase.apps.isEmpty) {
+    await Firebase.initializeApp(
+      name: "my_practice_app",
+      options: DefaultFirebaseOptions.currentPlatform,
+    ).whenComplete(() => print("complete!! thx"));
+  }
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
   runApp(
@@ -92,6 +97,7 @@ class MyApp extends StatelessWidget {
           'animationPractice': (context) => const AnimationPracticePage(),
           'getSingletonScreen': (context) => const GetSingletonScreen(),
           'setSingletonScreen': (context) => const SetSingletonScreen(),
+          'tossPaymentTestRouteName': (context) => const TossPaymetTestScreen(),
         });
   }
 }

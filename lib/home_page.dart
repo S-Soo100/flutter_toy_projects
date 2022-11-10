@@ -17,6 +17,7 @@ class _MyHomePageState extends State<MyHomePage> {
   bool showGetMenu = false;
   bool showFlutterBasicMenu = false;
   bool showSingletonMenu = false;
+  bool showTossPaymentMenu = false;
 
 // DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
 // AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
@@ -204,7 +205,28 @@ class _MyHomePageState extends State<MyHomePage> {
                           title: 'Get singleton',
                           router: 'getSingletonScreen'),
                     ])
-                  : const SizedBox()
+                  : const SizedBox(),
+              _rectangleButton(
+                onTap: () {
+                  showTossPaymentMenu = !showTossPaymentMenu;
+                  setState(() {});
+                },
+                child: Text(
+                  'Toss Payment',
+                  style: GoogleFonts.notoSansCanadianAboriginal(
+                      textStyle: Theme.of(context).textTheme.headline4,
+                      color: Colors.white),
+                ),
+                color: Color.fromARGB(255, 0, 30, 239),
+              ),
+              showTossPaymentMenu
+                  ? Column(children: [
+                      _routeButton(
+                          context: context,
+                          title: 'Toss Payment Test',
+                          router: 'tossPaymentTestRouteName'),
+                    ])
+                  : const SizedBox(),
             ],
           ),
         ),
