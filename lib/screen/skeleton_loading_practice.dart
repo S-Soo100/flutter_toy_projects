@@ -112,6 +112,7 @@ class _SkeletonLoadingPracticeState extends State<SkeletonLoadingPractice> {
                       width: 200,
                       height: 30,
                       color: Colors.blue,
+                      child: Text('mario'),
                     ),
                     Container(
                       width: 200,

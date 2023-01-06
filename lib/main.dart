@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_practice_app/firebase_options.dart';
+import 'package:my_practice_app/initial_binding.dart';
 import 'package:my_practice_app/provider/shopping_cart_provider.dart';
 import 'package:my_practice_app/screen/firebase/chatting_page.dart';
 import 'package:my_practice_app/screen/firebase/auth_page.dart';
@@ -30,6 +31,10 @@ import 'package:my_practice_app/controller/app_controller.dart';
 
 import 'screen/toss_payment/toss_payment_test.dart';
 
+//내부 디바이스 저장소 사용
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   // If you're going to use other Firebase services in the background, such as Firestore,
   // make sure you call `initializeApp` before using other Firebase services.
@@ -40,6 +45,7 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
   if (Firebase.apps.isEmpty) {
     await Firebase.initializeApp(
       name: "my_practice_app",
@@ -47,7 +53,6 @@ void main() async {
     ).whenComplete(() => print("complete!! thx"));
   }
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-
   runApp(
     MultiProvider(providers: [
       ChangeNotifierProvider(create: (_) => Counter()),
@@ -62,8 +67,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-        initialBinding:
-            BindingsBuilder.put(() => AppController(), permanent: true),
+        initialBinding: InitialBinding(),
         debugShowCheckedModeBanner: false,
         title: 'my practice app',
         theme: ThemeData(

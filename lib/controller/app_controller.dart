@@ -12,6 +12,8 @@ class AppController extends GetxController {
 
   @override
   void onInit() async {
+    super.onInit();
+
     /// 첫 빌드시, 권한 확인하기
     /// 아이폰은 무조건 받아야 하고, 안드로이드는 상관 없음. 따로 유저가 설정하지 않는 한,
     /// 자동 권한 확보 상태
@@ -30,7 +32,6 @@ class AppController extends GetxController {
     }
     _getToken();
     _onMessage();
-    super.onInit();
   }
 
   /// 디바이스 고유 토큰을 얻기 위한 메소드, 처음 한번만 사용해서 토큰을 확보하자.
