@@ -18,6 +18,7 @@ class _MyHomePageState extends State<MyHomePage> {
   bool showFlutterBasicMenu = false;
   bool showSingletonMenu = false;
   bool showTossPaymentMenu = false;
+  bool showHiveMenu = false;
 
 // DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
 // AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
@@ -225,6 +226,27 @@ class _MyHomePageState extends State<MyHomePage> {
                           context: context,
                           title: 'Toss Payment Test',
                           router: 'tossPaymentTestRouteName'),
+                    ])
+                  : const SizedBox(),
+              _rectangleButton(
+                onTap: () {
+                  showHiveMenu = !showHiveMenu;
+                  setState(() {});
+                },
+                child: Text(
+                  'Hive Flutter',
+                  style: GoogleFonts.lora(
+                      textStyle: Theme.of(context).textTheme.headline4,
+                      color: Colors.white),
+                ),
+                color: Color.fromARGB(255, 52, 88, 81),
+              ),
+              showHiveMenu
+                  ? Column(children: [
+                      _routeButton(
+                          context: context,
+                          title: 'Hive Flutter',
+                          router: 'hivePageRouteName'),
                     ])
                   : const SizedBox(),
             ],

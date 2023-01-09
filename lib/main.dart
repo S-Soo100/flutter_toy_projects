@@ -10,6 +10,7 @@ import 'package:my_practice_app/screen/firebase/auth_page.dart';
 import 'package:my_practice_app/screen/firebase/google_login_page.dart';
 import 'package:my_practice_app/screen/flutter_basic/animation_practice.dart';
 import 'package:my_practice_app/screen/flutter_basic/flutter_basic_page.dart';
+import 'package:my_practice_app/screen/hive/hive_page.dart';
 import 'package:my_practice_app/screen/provider/counter_provider_practice.dart';
 import 'package:my_practice_app/provider/counter_provider.dart';
 import 'package:my_practice_app/screen/http/http_clone_coding.dart';
@@ -46,6 +47,7 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
+  await Hive.openBox('testBox'); //Open Box
   if (Firebase.apps.isEmpty) {
     await Firebase.initializeApp(
       name: "my_practice_app",
@@ -102,6 +104,7 @@ class MyApp extends StatelessWidget {
           'getSingletonScreen': (context) => const GetSingletonScreen(),
           'setSingletonScreen': (context) => const SetSingletonScreen(),
           'tossPaymentTestRouteName': (context) => const TossPaymetTestScreen(),
+          'hivePageRouteName': (context) => const HivePage(),
         });
   }
 }
